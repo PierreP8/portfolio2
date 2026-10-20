@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UGG — Love Shot Providers — Mounia Lanou</title>
+  <link rel="stylesheet" href="assets/css/pizza-hut.css">
+  <link rel="stylesheet" href="assets/css/ugg.css">
+</head>
+<body>
+  <header class="site-nav">
+    <nav class="site-nav__grid" aria-label="Navigation principale">
+      <a href="index.html">HOME</a>
+      <a href="campaigns.html">CAMPAIGNS</a>
+      <a href="more-works.html">MORE WORKS</a>
+      <a href="mailto:lanou.mou@gmail.com">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="project-grid ugg-project-grid">
+      <section class="ugg-introduction">
+        <h1>Love shot providers</h1>
+        <p class="project-meta">Agency: Yard Agency<br>Role: Creative Concept, Art Direction &amp; Casting<br>Scope: Social Media Content, Casting &amp; Video Series<br>Client: UGG<br>Year: 2023</p>
+        <p class="project-intro">The <strong>Feels Like UGG</strong> campaign bridges UGG with European street culture on a permanent loop. We bypassed standard product placement to create genuine cultural resonance, using love as an editorial filter. Instead of traditional faces, we cast local “Love Shot Providers”: rising talent representing diversity, radical self-belief, community, and pure authentic style.</p>
+        <p class="project-copy"><strong>The Cast:</strong> Four European voices shaping their own scenes: Danny Lomas (London), Lucky Love (Paris), Simran (London), and Matyouz (Paris). Minimalist studio setup, unfiltered answers.</p>
+      </section>
+
+      <section class="ugg-media" aria-label="Visuels et vidéos UGG">
+        <div class="portrait-slider" data-slider>
+          <div class="portrait-slider__viewport">
+            <div class="portrait-slider__track">
+              <img class="portrait-slider__image" src="assets/images/ugg-love-shot-4.png" alt="UGG Love Shot Provider — portrait 1">
+              <img class="portrait-slider__image" src="assets/images/ugg-love-shot-3.png" alt="UGG Love Shot Provider — portrait 2">
+              <img class="portrait-slider__image" src="assets/images/ugg-love-shot-1.png" alt="UGG Love Shot Provider — portrait 3">
+              <img class="portrait-slider__image" src="assets/images/ugg-love-shot-2.png" alt="UGG Love Shot Provider — portrait 4">
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="reels-carousel ugg-reels-wide" aria-label="UGG Reels">
+          <article class="reel-item"><div class="video-container-916"><iframe src="https://www.youtube-nocookie.com/embed/W1ORDaI3I1o?rel=0&amp;modestbranding=1&amp;controls=1" title="UGG Reel 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></article>
+          <article class="reel-item"><div class="video-container-916"><iframe src="https://www.youtube-nocookie.com/embed/eMTtzJF89gE?rel=0&amp;modestbranding=1&amp;controls=1" title="UGG Reel 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></article>
+          <article class="reel-item"><div class="video-container-916"><iframe src="https://www.youtube-nocookie.com/embed/SDHMnL9WMDU?rel=0&amp;modestbranding=1&amp;controls=1" title="UGG Reel 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></article>
+          <article class="reel-item"><div class="video-container-916"><iframe src="https://www.youtube-nocookie.com/embed/Pie0OS7j2ig?rel=0&amp;modestbranding=1&amp;controls=1" title="UGG Reel 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></article>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a href="about.html">ABOUT ME</a></footer>
+
+  <script>
+    const slider = document.querySelector('[data-slider]');
+    const slides = [...slider.querySelectorAll('.portrait-slider__image')];
+    const track = slider.querySelector('.portrait-slider__track');
+    // Add a visual copy of the first image after the last one. This lets the
+    // transition keep moving left, then quietly resets before the next slide.
+    const firstSlideCopy = slides[0].cloneNode(true);
+    firstSlideCopy.setAttribute('aria-hidden', 'true');
+    track.append(firstSlideCopy);
+    let current = 0;
+    const show = (index) => {
+      current = index;
+      track.style.transform = `translateX(-${current * 25}%)`;
+    };
+
+    track.addEventListener('transitionend', () => {
+      if (current !== slides.length) return;
+
+      track.style.transition = 'none';
+      current = 0;
+      track.style.transform = 'translateX(0)';
+      // Restore the CSS transition once the invisible reset is applied.
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        track.style.transition = '';
+      }));
+    });
+
+    window.setInterval(() => show(current + 1), 1500);
+  </script>
+</body>
+</html>
